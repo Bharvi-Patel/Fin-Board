@@ -11,7 +11,7 @@ export default function SpendingDonutChart() {
   const total = data.reduce((s, d) => s + d.value, 0)
 
   return (
-    <ChartCard title="Spending Breakdown" subtitle="By category this period">
+    <ChartCard title="Spendings" subtitle="By category this period">
       <ResponsiveContainer width="100%" height={170}>
         <PieChart>
           <Pie

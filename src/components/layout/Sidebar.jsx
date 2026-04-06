@@ -15,8 +15,8 @@ export default function Sidebar({ open, onClose }) {
     <aside className={`${styles.sidebar} ${open ? styles.open : ''}`}>
       {/* Logo */}
       <div className={styles.logo}>
-        <div className={styles.logoMark}>₹</div>
-        <span className={styles.logoText}>Ledger</span>
+        <div className={styles.logoMark}>💰</div>
+        <span className={styles.logoText}>FinBoard</span>
       </div>
 
       {/* Navigation */}

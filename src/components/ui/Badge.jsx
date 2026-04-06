@@ -2,7 +2,7 @@ import { CATEGORIES } from '../../data/mockData'
 import styles from './Badge.module.css'
 
 export function CategoryBadge({ category }) {
-  const meta = CATEGORIES[category] || { color: '#888', icon: '•', bg: 'rgba(136,136,136,0.10)' }
+  const meta = CATEGORIES[category] || { color: '#888', icon: '•', bg: 'rgba(61, 9, 9, 0.1)' }
   return (
     <span
       className={styles.badge}
