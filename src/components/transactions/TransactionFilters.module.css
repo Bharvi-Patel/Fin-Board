@@ -1,0 +1,36 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.searchWrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text3);
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.searchInput {
+  padding-left: 32px !important;
+}
+
+.select {
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 560px) {
+  .select { min-width: 0; flex: 1; }
+}
