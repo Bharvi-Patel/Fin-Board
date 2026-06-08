@@ -1,4 +1,4 @@
-# Ledger — Financial Dashboard
+# FinBoard — Financial Dashboard
 
 A production-structured React dashboard for tracking personal financial activity. Built with Vite + React, Zustand for state, Recharts for visualisations, and CSS Modules for scoped styling.
 

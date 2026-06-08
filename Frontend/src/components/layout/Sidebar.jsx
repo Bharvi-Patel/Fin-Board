@@ -55,7 +55,7 @@ export default function Sidebar({ open, onClose }) {
           </div>
         </div>
 
-        <div className={styles.version}>Ledger v1.0 · 2024</div>
+        <div className={styles.version}>FinBoard v1.0 · 2026</div>
       </div>
     </aside>
   )
