@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useAppStore } from '../../store/useAppStore'
 import styles from './Sidebar.module.css'
 
@@ -9,7 +10,30 @@ const NAV = [
 ]
 
 export default function Sidebar({ open, onClose }) {
-  const { role, setRole } = useAppStore()
+  const { user, logout, deleteAccount } = useAppStore()
+  const navigate = useNavigate()
+  const [showConfirm, setShowConfirm] = useState(false)
+  const [deleting, setDeleting] = useState(false)
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+  }
+
+  const handleDeleteAccount = async () => {
+    setDeleting(true)
+    try {
+      await deleteAccount()
+      navigate('/login')
+    } catch {
+      setDeleting(false)
+      setShowConfirm(false)
+    }
+  }
+
+  const initials = user?.name
+    ? user.name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)
+    : '?'
 
   return (
     <aside className={`${styles.sidebar} ${open ? styles.open : ''}`}>
@@ -37,23 +61,70 @@ export default function Sidebar({ open, onClose }) {
         ))}
       </nav>
 
-      {/* Role Switcher */}
+      {/* Footer — Profile */}
       <div className={styles.footer}>
-        <div className={styles.roleBox}>
-          <p className={styles.roleLabel}>Active Role</p>
-          <select
-            className={styles.roleSelect}
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-          >
-            <option value="admin">Admin</option>
-            <option value="viewer">Viewer</option>
-          </select>
-          <div className={`${styles.roleBadge} ${role === 'admin' ? styles.admin : styles.viewer}`}>
-            <span>{role === 'admin' ? '🔑' : '👁'}</span>
-            <span>{role === 'admin' ? 'Full Access' : 'Read Only'}</span>
+        <div className={styles.profile}>
+          <div className={styles.avatar}>{initials}</div>
+
+          <div className={styles.userInfo}>
+            <p className={styles.userName}>{user?.name || 'User'}</p>
+            <p className={styles.userEmail}>{user?.email || ''}</p>
+          </div>
+
+          <div className={styles.profileActions}>
+            {/* Delete account */}
+            <button
+              className={styles.deleteAccBtn}
+              onClick={() => setShowConfirm(true)}
+              title="Delete account"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                <path d="M10 11v6M14 11v6"/>
+                <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+              </svg>
+            </button>
+
+            {/* Logout */}
+            <button
+              className={styles.logoutBtn}
+              onClick={handleLogout}
+              title="Sign out"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                <polyline points="16 17 21 12 16 7"/>
+                <line x1="21" y1="12" x2="9" y2="12"/>
+              </svg>
+            </button>
           </div>
         </div>
+
+        {/* Delete confirmation */}
+        {showConfirm && (
+          <div className={styles.confirmBox}>
+            <p className={styles.confirmText}>
+              This will permanently delete your account and all transactions.
+            </p>
+          <div className={styles.confirmBtns}>
+            <button
+              className={styles.confirmCancel}
+              onClick={() => setShowConfirm(false)}
+              disabled={deleting}
+            >
+              Cancel
+            </button>
+          <button
+            className={styles.confirmDelete}
+            onClick={handleDeleteAccount}
+            disabled={deleting}
+          >
+            {deleting ? 'Deleting…' : 'Delete'}
+          </button>
+        </div>
+      </div>
+    )}
 
         <div className={styles.version}>FinBoard v1.0 · 2026</div>
       </div>

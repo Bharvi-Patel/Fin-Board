@@ -2,12 +2,9 @@ import { CATEGORIES } from '../../data/mockData'
 import styles from './Badge.module.css'
 
 export function CategoryBadge({ category }) {
-  const meta = CATEGORIES[category] || { color: '#888', icon: '•', bg: 'rgba(61, 9, 9, 0.1)' }
+  const meta = CATEGORIES[category] || { icon: '•' }
   return (
-    <span
-      className={styles.badge}
-      style={{ background: meta.bg, color: meta.color }}
-    >
+    <span className={`${styles.badge} ${styles.category}`}>
       <span>{meta.icon}</span>
       <span>{category}</span>
     </span>

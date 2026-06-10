@@ -9,6 +9,14 @@
   white-space: nowrap;
 }
 
+/* Category — no background, just white text */
+.category {
+  background: transparent;
+  color: var(--text);
+  padding-left: 0;
+}
+
+/* Type badges */
 .income {
   background: var(--green-bg);
   color: var(--green);

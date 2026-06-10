@@ -78,3 +78,21 @@
   .subtitle { display: none; }
   .roleText { display: none; }
 }
+
+.userPill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 99px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  font-size: 12px;
+}
+
+.userName {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text2);
+}

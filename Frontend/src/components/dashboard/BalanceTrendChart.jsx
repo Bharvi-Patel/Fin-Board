@@ -2,16 +2,19 @@ import {
   AreaChart, Area, XAxis, YAxis,
   CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts'
-import { TREND_DATA } from '../../data/mockData'
+import { useAppStore } from '../../store/useAppStore'
 import { fmtShort } from '../../utils/helpers'
 import ChartTooltip from '../ui/ChartTooltip'
 import ChartCard from '../ui/ChartCard'
 
 export default function BalanceTrendChart() {
+  const getMonthlyData = useAppStore((s) => s.getMonthlyData)
+  const data = getMonthlyData()
+
   return (
     <ChartCard title="Balance Trend" subtitle="6-month income & savings overview">
       <ResponsiveContainer width="100%" height={220}>
-        <AreaChart data={TREND_DATA} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
+        <AreaChart data={data} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="gradBalance" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%"  stopColor="#c8a45a" stopOpacity={0.28} />

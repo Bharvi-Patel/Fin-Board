@@ -1,14 +1,14 @@
 export const CATEGORIES = {
-  Food:          { color: '#c8a45a', icon: '🍜', bg: 'rgba(200,164,90,0.10)' },
-  Transport:     { color: '#5a8ed4', icon: '🚗', bg: 'rgba(90,142,212,0.10)' },
-  Entertainment: { color: '#9575cd', icon: '🎬', bg: 'rgba(149,117,205,0.10)' },
-  Shopping:      { color: '#d4895f', icon: '🛍️', bg: 'rgba(212,137,95,0.10)' },
-  Health:        { color: '#52a87c', icon: '💊', bg: 'rgba(82,168,124,0.10)' },
-  Housing:       { color: '#4db8a8', icon: '🏠', bg: 'rgba(77,184,168,0.10)' },
-  Salary:        { color: '#52a87c', icon: '💰', bg: 'rgba(82,168,124,0.10)' },
-  Freelance:     { color: '#c8a45a', icon: '💼', bg: 'rgba(200,164,90,0.10)' },
-  Investment:    { color: '#c96b8a', icon: '📈', bg: 'rgba(201,107,138,0.10)' },
-  Utilities:     { color: '#9575cd', icon: '⚡', bg: 'rgba(149,117,205,0.10)' },
+  Food:          { color: '#c8a45a', bg: 'rgba(200,164,90,0.10)' },
+  Transport:     { color: '#5a8ed4', bg: 'rgba(90,142,212,0.10)' },
+  Entertainment: { color: '#9575cd', bg: 'rgba(149,117,205,0.10)' },
+  Shopping:      { color: '#d4895f', bg: 'rgba(212,137,95,0.10)' },
+  Health:        { color: '#52a87c', bg: 'rgba(82,168,124,0.10)' },
+  Housing:       { color: '#4db8a8', bg: 'rgba(77,184,168,0.10)' },
+  Salary:        { color: '#52a87c', bg: 'rgba(82,168,124,0.10)' },
+  Freelance:     { color: '#c8a45a', bg: 'rgba(200,164,90,0.10)' },
+  Investment:    { color: '#c96b8a', bg: 'rgba(201,107,138,0.10)' },
+  Utilities:     { color: '#9575cd', bg: 'rgba(149,117,205,0.10)' },
 }
 
 let nextId = 100

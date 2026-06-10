@@ -10,7 +10,6 @@ const PER_PAGE = 8
 export default function TransactionTable() {
   const transactions   = useAppStore((s) => s.transactions)
   const deleteTransaction = useAppStore((s) => s.deleteTransaction)
-  const role           = useAppStore((s) => s.role)
   const { search, category, type, sortBy, sortDir, page, toggleSort, setPage } = useFilterStore()
 
   const filtered = useMemo(() => {
@@ -79,13 +78,13 @@ export default function TransactionTable() {
               <th onClick={() => toggleSort('amount')} className={`${styles.sortable} ${styles.right}`}>
                 Amount <SortIcon col="amount" />
               </th>
-              {role === 'admin' && <th className={styles.center}></th>}
+              <th className={styles.center}></th>
             </tr>
           </thead>
           <tbody>
             {paged.length === 0 ? (
               <tr>
-                <td colSpan={role === 'admin' ? 6 : 5}>
+                <td colSpan={6}>
                   <EmptyState
                     icon="🔍"
                     title="No transactions found"
@@ -106,17 +105,12 @@ export default function TransactionTable() {
                   <td className={`${styles.amountCell} ${txn.type === 'income' ? styles.income : ''}`}>
                     {txn.type === 'income' ? '+' : '−'}{fmt(txn.amount)}
                   </td>
-                  {role === 'admin' && (
-                    <td className={styles.center}>
-                      <button
-                        className={styles.deleteBtn}
-                        onClick={() => deleteTransaction(txn.id)}
-                        title="Delete transaction"
-                      >
-                        ✕
-                      </button>
-                    </td>
-                  )}
+                  <td className={styles.center}>
+                    <button
+                      className={styles.deleteBtn}
+                      onClick={() => deleteTransaction(txn.id)}
+                    >✕</button>
+                  </td>
                 </tr>
               ))
             )}

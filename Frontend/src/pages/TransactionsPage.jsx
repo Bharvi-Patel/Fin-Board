@@ -30,11 +30,9 @@ export default function TransactionsPage() {
           <Button variant="secondary" onClick={handleExport}>
             ⬇ Export CSV
           </Button>
-          {role === 'admin' && (
-            <Button variant="primary" onClick={() => setShowModal(true)}>
-              + Add Transaction
-            </Button>
-          )}
+          <Button variant="primary" onClick={() => setShowModal(true)}>
+            + Add Transaction
+          </Button>
         </div>
       </div>
 
